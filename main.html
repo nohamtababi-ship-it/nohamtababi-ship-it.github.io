@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio – Noham Tababi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --card-bg: #111827;
+      --accent: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg) 0%, #1e1b4b 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 3rem 0;
+      background: rgba(17, 24, 39, 0.5);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .about {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(17, 24, 39, 0.55);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .about strong {
+      color: var(--text);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.4);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(59, 130, 246, 0.5);
+      border-color: var(--accent);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .tag {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+    }
+
+    .tag.math {
+      background: rgba(168,85,247,0.18);
+      color: #c084fc;
+      border-color: rgba(168,85,247,0.4);
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .challenge {
+      font-size: 0.95rem;
+      color: #cbd5f1;
+      margin-bottom: 1.4rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid rgba(59,130,246,0.5);
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.75rem;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.4);
+    }
+
+    .project-btn:hover {
+      background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.5);
+      color: white;
+      text-decoration: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 4rem;
+      padding: 2rem;
+      background: rgba(17, 24, 39, 0.5);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 6rem;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-card.featured {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 1rem; }
+      header { padding: 2rem 1rem; margin-bottom: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .project-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Noham Tababi</h1>
+      <p class="subtitle">
+        Étudiant en BUT Informatique, passionné de C++, game dev et IA
+      </p>
+      <a href="https://github.com/nohamtababi-ship-it" class="project-btn" target="_blank">
+        Explorer mes dépôts →
+      </a>
+    </header>
+
+    <section class="about">
+      <p>
+        Je développe principalement en <strong>C++</strong> (mais aussi en java) parce que j’aime comprendre ce qui se passe
+        sous le capot : mémoire, performance, structures internes. Je construis des projets
+        techniques pour apprendre en profondeur — moteurs logiques, IA, outils CLI, —
+        avec une approche <strong>from scratch</strong> dès que possible.
+      </p>
+    </section>
+
+    <div class="projects-grid">
+      <!-- PROJET IA (FEATURED) -->
+      <div class="project-card featured">
+        <div class="badge">PROJET PRINCIPAL</div>
+        <h2 class="project-title">IA From Scratch</h2>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Intelligence Artificielle</span>
+          <span class="tag math">Maths</span>
+          <span class="tag">Backpropagation</span>
+        </div>
+        <p class="project-desc">
+          Implémentation d'un réseau de neurones en C++ basé uniquement sur les concepts
+          mathématiques. Rétropropagation et gradient descendant sans bibliothèque externe.
+          objectif : comprendre chaque étape du calcul.
+        </p>
+        <p class="challenge">
+          Plus grosse difficulté : stabiliser l’apprentissage et déboguer les gradients
+          numériquement, étape par étape.
+        </p>
+        <a href="https://github.com/nohamtababi-ship-it/IA_From_Scratch" 
+           class="project-btn" target="_blank" rel="noopener">
+          Lire le code source →
+        </a>
+      </div>
+
+      <!-- PROJET JEU -->
+      <div class="project-card">
+        <h2 class="project-title">Jeu Code Game Jam 2026</h2>
+        <div class="project-tags">
+          <span class="tag">Godot</span>
+          <span class="tag">GDScript</span>
+          <span class="tag">Game Dev</span>
+          <span class="tag">Game Jam</span>
+        </div>
+        <p class="project-desc">
+          Prototype de jeu 2D développé sous contrainte de temps pour la Code Game Jam.
+          Gameplay complet, boucle de progression, ennemis et pixel art jouable.
+        </p>
+        <p class="challenge">
+          Le vrai défi a été d’itérer vite, enlever les features inutiles et livrer un jeu stable dans le temps imparti.
+        </p>
+        <a href="#" class="project-btn" target="_blank" rel="noopener">
+          Build bientôt dispo →
+        </a>
+      </div>
+
+      <!-- PROJET CONTACT -->
+      <div class="project-card">
+        <h2 class="project-title">Gestion de Contact CLI</h2>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Fichiers</span>
+          <span class="tag">Structures</span>
+          <span class="tag">CLI</span>
+        </div>
+        <p class="project-desc">
+          Application console pour gérer un carnet d’adresses avec persistance fichier.
+          Ajout, recherche, modification et suppression avec structures de données propres.
+        </p>
+        <p class="challenge">
+          Travail sur la structuration des données et la robustesse des entrées utilisateur.
+        </p>
+        <a href="https://github.com/nohamtababi-ship-it/Gestion-de-contact" 
+           class="project-btn" target="_blank" rel="noopener">
+          Explorer le repo →
+        </a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span>Projets phares</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">C++</span>
+        <span>Langage principal</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">Java</span>
+        <span>Langage secondaire</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">Godot</span>
+        <span>Game Development</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">CLI</span>
+        <span>Outils techniques</span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Construit à la main en HTML/CSS, sans framework</p>
+      <p>Portfolio — Noham Tababi — 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
