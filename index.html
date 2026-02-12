@@ -5,230 +5,235 @@
   <title>Portfolio – Noham Tababi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root {
-      --bg: #0a0e1a;
-      --card-bg: #111827;
-      --accent: #3b82f6;
-      --accent-hover: #1d4ed8;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #334155;
-      --shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
-    }
+:root {
+  --bg: #ffffff;             /* fond principal */
+  --card-bg: #f0fdf4;        /* fond des cartes */
+  --card-hover: #dcfce7;     /* fond au hover des cartes */
+  --stats-bg: #e6f4ea;       /* fond section stats */
+  --footer-bg: #f4fcf7;      /* fond footer légèrement différent */
+  --accent: #22c55e;         /* vert principal pour titres, badges et boutons */
+  --accent-hover: #16a34a;   /* vert foncé au hover */
+  --text: #111827;           /* texte principal sombre */
+  --text-muted: #4b5563;     /* texte secondaire gris-vert */
+  --border: #d1d5db;         /* bordures légères */
+  --shadow: 0 20px 25px -5px rgba(0,0,0,0.1); /* ombre douce */
+  --tag-bg: rgba(34,197,94,0.15); /* tag vert léger */
+  --tag-color: #16a34a;           /* texte des tags vert foncé */
+  --tag-math-bg: rgba(134,239,172,0.2); /* tag maths vert clair */
+  --tag-math-color: #059669;         /* texte tag maths */
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+/* Corps du site */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, var(--bg) 0%, #1e1b4b 100%);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+/* Conteneur général */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 0;
+  background: rgba(17,24,39,0.05);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 3rem 0;
-      background: rgba(17, 24, 39, 0.5);
-      border-radius: 24px;
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-    }
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-      font-weight: 800;
-    }
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
 
-    .subtitle {
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
+.about {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(17,24,39,0.05);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+.about strong {
+  color: var(--text);
+}
 
-    .about {
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: rgba(17, 24, 39, 0.55);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-    }
+/* Grille projets */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
 
-    .about strong {
-      color: var(--text);
-    }
+/* Cartes projets */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.project-card.featured {
+  grid-column: span 2;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(34,197,94,0.4);
+}
+.project-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-12px);
+  box-shadow: var(--shadow), 0 0 0 1px var(--accent);
+  border-color: var(--accent);
+}
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+/* Badge */
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
 
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid var(--border);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
+/* Titres projet */
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
 
-    .project-card.featured {
-      grid-column: span 2;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(59,130,246,0.4);
-    }
+/* Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.tag {
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(34,197,94,0.4);
+}
+.tag.math {
+  background: var(--tag-math-bg);
+  color: var(--tag-math-color);
+  border-color: rgba(5,150,105,0.4);
+}
 
-    .badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: var(--accent);
-      color: white;
-      font-size: 0.75rem;
-      padding: 0.35rem 0.6rem;
-      border-radius: 999px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
+/* Description & challenge */
+.project-desc {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.challenge {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid rgba(34,197,94,0.5);
+}
 
-    .project-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow), 0 0 0 1px rgba(59, 130, 246, 0.5);
-      border-color: var(--accent);
-    }
+/* Boutons */
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px 0 rgba(34,197,94,0.4);
+}
+.project-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(34,197,94,0.5);
+}
 
-    .project-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
+/* Stats */
+.stats {
+  background: var(--stats-bg);
+  border: 1px solid var(--border);
+  border-radius: 200px;
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--footer-bg);
+  border-radius: 0 0 20px 20px;
+}
 
-    .tag {
-      background: rgba(59, 130, 246, 0.2);
-      color: var(--accent);
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid rgba(59, 130, 246, 0.4);
-    }
-
-    .tag.math {
-      background: rgba(168,85,247,0.18);
-      color: #c084fc;
-      border-color: rgba(168,85,247,0.4);
-    }
-
-    .project-desc {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .challenge {
-      font-size: 0.95rem;
-      color: #cbd5f1;
-      margin-bottom: 1.4rem;
-      padding-left: 0.75rem;
-      border-left: 3px solid rgba(59,130,246,0.5);
-    }
-
-    .project-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.875rem 1.75rem;
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.4);
-    }
-
-    .project-btn:hover {
-      background: linear-gradient(135deg, var(--accent-hover), var(--accent));
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.5);
-      color: white;
-      text-decoration: none;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 4rem;
-      padding: 2rem;
-      background: rgba(17, 24, 39, 0.5);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 6rem;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 900px) {
-      .project-card.featured {
-        grid-column: span 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 1rem; }
-      header { padding: 2rem 1rem; margin-bottom: 2rem; }
-      .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .project-card { padding: 1.5rem; }
-    }
+/* Responsive */
+@media (max-width: 900px) {
+  .project-card.featured { grid-column: span 1; }
+}
+@media (max-width: 768px) {
+  .container { padding: 1rem; }
+  header { padding: 2rem 1rem; margin-bottom: 2rem; }
+  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-card { padding: 1.5rem; }
+}
   </style>
 </head>
 <body>
@@ -245,9 +250,9 @@
 
     <section class="about">
       <p>
-        Je développe principalement en <strong>C++</strong> (mais aussi en java) parce que j’aime comprendre ce qui se passe
+        Je développe principalement en <strong>C++</strong> (mais aussi en Java) parce que j’aime comprendre ce qui se passe
         sous le capot : mémoire, performance, structures internes. Je construis des projets
-        techniques pour apprendre en profondeur — moteurs logiques, IA, outils CLI, —
+        techniques pour apprendre en profondeur — moteurs logiques, IA, outils CLI —
         avec une approche <strong>from scratch</strong> dès que possible.
       </p>
     </section>
@@ -266,7 +271,7 @@
         <p class="project-desc">
           Implémentation d'un réseau de neurones en C++ basé uniquement sur les concepts
           mathématiques. Rétropropagation et gradient descendant sans bibliothèque externe.
-          objectif : comprendre chaque étape du calcul.
+          Objectif : comprendre chaque étape du calcul.
         </p>
         <p class="challenge">
           Plus grosse difficulté : stabiliser l’apprentissage et déboguer les gradients
@@ -274,7 +279,7 @@
         </p>
         <a href="https://github.com/nohamtababi-ship-it/IA_From_Scratch" 
            class="project-btn" target="_blank" rel="noopener">
-          Lire le code source →
+          Lire le code source 
         </a>
       </div>
 
@@ -295,7 +300,7 @@
           Le vrai défi a été d’itérer vite, enlever les features inutiles et livrer un jeu stable dans le temps imparti.
         </p>
         <a href="#" class="project-btn" target="_blank" rel="noopener">
-          Build bientôt dispo →
+          Build bientôt dispo 
         </a>
       </div>
 
@@ -317,7 +322,7 @@
         </p>
         <a href="https://github.com/nohamtababi-ship-it/Gestion-de-contact" 
            class="project-btn" target="_blank" rel="noopener">
-          Explorer le repo →
+          Lire le code source
         </a>
       </div>
     </div>
@@ -346,8 +351,7 @@
     </div>
 
     <footer class="footer">
-      <p>Construit à la main en HTML/CSS, sans framework</p>
-      <p>Portfolio — Noham Tababi — 2026</p>
+      <p>Portfolio  Noham Tababi  2026</p>
     </footer>
   </div>
 </body>
