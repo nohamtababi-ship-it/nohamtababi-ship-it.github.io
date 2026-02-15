@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio – Noham Tababi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root {
+  --bg: #020617;
+  --bg-soft: #020617;
+  --panel: rgba(15,23,42,0.9);
+  --panel-soft: rgba(15,23,42,0.7);
+  --accent: #22c55e;
+  --accent-soft: rgba(34,197,94,0.18);
+  --accent-strong: #4ade80;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: rgba(148,163,184,0.4);
+  --shadow-soft: 0 18px 60px rgba(15,23,42,0.7);
+  --radius-lg: 18px;
+  --radius-full: 999px;
+  --transition-fast: 150ms ease;
+  --transition-med: 220ms ease-out;
+}
+
+/* RESET */
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(34,197,94,0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56,189,248,0.18), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* LAYOUT */
+.layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  gap: 2rem;
+}
+
+.sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: flex-start;
+  height: fit-content;
+  background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.82));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  padding: 1.8rem 1.6rem;
+  backdrop-filter: blur(18px);
+}
+
+.main {
+  background: linear-gradient(155deg, rgba(15,23,42,0.86), rgba(15,23,42,0.92));
+  border-radius: 26px;
+  border: 1px solid rgba(148,163,184,0.55);
+  padding: 2.4rem 2.6rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+/* SIDEBAR */
+.name {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #bbf7d0, #22c55e, #a5b4fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: .4rem;
+}
+
+.role {
+  color: var(--muted);
+  font-size: .96rem;
+  margin-bottom: 1.6rem;
+}
+
+.side-block {
+  margin-bottom: 1.6rem;
+}
+
+.side-title {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: .6rem;
+}
+
+.side-list {
+  display: grid;
+  gap: .35rem;
+  font-size: .95rem;
+}
+
+.side-list div {
+  padding: .28rem .6rem;
+  border-radius: .7rem;
+  border: 1px solid rgba(148,163,184,0.3);
+  background: rgba(15,23,42,0.7);
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: radial-gradient(circle at top left, var(--accent), #16a34a);
+  color: white;
+  padding: .75rem 1.15rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .9rem;
+  margin-top: .6rem;
+  border: 1px solid rgba(22,163,74,0.9);
+  box-shadow: 0 12px 30px rgba(22,163,74,0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.github-btn::after {
+  content: "↗";
+  font-size: .9rem;
+}
+
+.github-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(22,163,74,0.55);
+  background: radial-gradient(circle at top left, #22c55e, #22c55e);
+}
+
+/* HEADER */
+.page-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.page-title span {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro {
+  position: relative;
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem 1.4rem 1.7rem;
+  margin-bottom: 2.6rem;
+  color: var(--muted);
+  background: radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 55%),
+              rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.55);
+  overflow: hidden;
+}
+
+.intro::before {
+  content: "Focus bas niveau • IA • Game Dev";
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(148,163,184,0.85);
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 2.8rem;
+  display: grid;
+  gap: 2.2rem;
+}
+
+.timeline::before {
+  content:"";
+  position:absolute;
+  left: 10px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background: linear-gradient(to bottom, var(--accent), rgba(34,197,94,0.05));
+  border-radius: 999px;
+}
+
+/* PROJECT CARD */
+.project {
+  position: relative;
+  background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.82));
+  border: 1px solid rgba(148,163,184,0.55);
+  border-radius: 16px;
+  padding: 1.4rem 1.6rem 1.35rem 1.6rem;
+  box-shadow: 0 14px 40px rgba(15,23,42,0.65);
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
+    border-color var(--transition-med),
+    background var(--transition-med);
+  min-height: 120px;
+}
+
+.project:hover {
+  transform: translateY(-4px) translateX(2px);
+  box-shadow: 0 24px 60px rgba(15,23,42,0.9);
+  border-color: rgba(34,197,94,0.7);
+  background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94));
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  left: -2.73rem;
+  top: 1.6rem;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 20%, #bbf7d0, #22c55e);
+  border-radius: 50%;
+  border: 3px solid #020617;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.28);
+  transition: transform var(--transition-med); /* Active la transition */
+}
+
+.project:hover::before {
+  transform: translateY(4px) translateX(-2px); /* Compense EXACTEMENT l'inverse du mouvement parent */
+}
+
+.project h2 {
+  font-size: 1.3rem;
+  margin-bottom: .35rem;
+}
+
+.project-meta {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .85rem;
+}
+
+.tag {
+  font-size: .72rem;
+  background: rgba(15,23,42,0.8);
+  color: #bbf7d0;
+  padding: .25rem .7rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(34,197,94,0.35);
+  font-weight: 600;
+}
+
+.project p {
+  margin-bottom: .45rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.project a {
+  color: var(--accent-strong);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}
+
+/* STATS BAR */
+.stats-bar {
+  margin-top: 2.6rem;
+  background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.82));
+  border: 1px solid rgba(148,163,184,0.5);
+  border-radius: 16px;
+  padding: 1.15rem 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 1.2rem;
+  font-size: .9rem;
+}
+
+.stat-item {
+  display: flex;
+  gap: .45rem;
+  align-items: center;
+  color: var(--muted);
+}
+
+.stat-num {
+  font-weight: 800;
+  color: var(--accent-strong);
+}
+
+/* FOOTER */
+footer {
+  margin-top: 2.6rem;
+  color: var(--muted);
+  font-size: .85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: .85rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 1.2rem 1rem 2rem;
+  }
+
+  .sidebar {
+    position: static;
+    margin-bottom: .4rem;
+    order: -1;
+  }
+
+  .main {
+    padding: 1.8rem 1.4rem 2rem;
+  }
+
+  .timeline {
+    padding-left: 2.4rem;
+  }
+
+  .intro::before {
+    position: static;
+    display: block;
+    margin-top: .6rem;
+    font-size: .68rem;
+  }
+
+  .project::before {
+    left: -2.33rem;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="name">Noham Tababi</div>
+    <div class="role">BUT1 Informatique<br>C++ / Game Dev / IA</div>
+
+    <div class="side-block">
+      <div class="side-title">Langages</div>
+      <div class="side-list">
+        <div>C++</div>
+        <div>Java</div>
+        <div>GDScript</div>
+      </div>
+    </div>
+
+    <a href="https://github.com/nohamtababi-ship-it" target="_blank" class="github-btn">
+      Voir GitHub
+    </a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <h1 class="page-title"><span>Projets techniques</span></h1>
+
+    <div class="intro">
+      Je construis des projets pour comprendre les mécanismes internes&nbsp;:
+      mémoire, calcul, structures, IA. J'essaie de coder un maximum de choses
+      from scratch pour voir où ça casse — et pourquoi.
+    </div>
+
+    <section class="timeline">
+
+      <!-- IA FROM SCRATCH -->
+      <article class="project">
+        <h2>IA From Scratch</h2>
+        <div class="project-meta">2026 • Projet personnel • C++</div>
+
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">IA</span>
+          <span class="tag">Maths</span>
+          <span class="tag">Backprop</span>
+        </div>
+
+        <p>
+          Réseau de neurones codé entièrement en C++ sans librairie ML.
+          Backpropagation et gradient descendant implémentés à la main.
+        </p>
+
+        <p>
+          Difficulté&nbsp;: stabiliser l'apprentissage et vérifier les gradients
+          numériquement.
+        </p>
+
+        <a href="https://github.com/nohamtababi-ship-it/IA_From_Scratch" target="_blank">
+          → Code source
+        </a>
+      </article>
+
+      <!-- GESTION DE CONTACT CLI -->
+      <article class="project">
+        <h2>Gestion de Contact CLI</h2>
+        <div class="project-meta">2026 • Projet personnel • C++</div>
+
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">Fichiers</span>
+          <span class="tag">Structures</span>
+          <span class="tag">CLI</span>
+        </div>
+
+        <p>
+          Application console pour gérer un carnet d'adresses avec persistance fichier.
+          Ajout, recherche, modification et suppression avec structures de données propres.
+        </p>
+
+        <p>
+          Travail sur la structuration des données et la robustesse des entrées utilisateur.
+        </p>
+
+        <a href="https://github.com/nohamtababi-ship-it/Gestion-de-contact" target="_blank">
+          → Code source
+        </a>
+      </article>
+
+      <!-- GAME JAM -->
+      <article class="project">
+        <h2>Jeu Code Game Jam 2026</h2>
+        <div class="project-meta">2026 • Game Jam • Godot</div>
+
+        <div class="tags">
+          <span class="tag">Godot</span>
+          <span class="tag">Game Dev</span>
+          <span class="tag">Jam</span>
+        </div>
+
+        <p>
+          Prototype 2D jouable développé sous contrainte de temps,
+          avec boucle de gameplay complète et gestion des ennemis.
+        </p>
+
+        <p>
+          Challenge&nbsp;: livrer un produit fini en 48h avec mécaniques polies.
+        </p>
+
+        <a href="https://github.com/nohamtababi-ship-it" target="_blank">
+          → Voir le projet
+        </a>
+      </article>
+
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span>Projets actifs</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">C++</span>
+        <span>Langage principal</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2026</span>
+        <span>Année en cours</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2026 Noham Tababi • Portfolio technique</span>
+      <p>version 1 : <a href="index.html">Accueil</a></p>
+      <a href="mailto:noham.tababi@universite-paris-saclay.fr">noham.tababi@universite-paris-saclay.fr</a>
+    </footer>
+
+  </main>
+
+</div>
+
+</body>
+</html>
