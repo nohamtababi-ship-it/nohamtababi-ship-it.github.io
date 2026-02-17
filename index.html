@@ -5,6 +5,8 @@
   <title>Portfolio – Noham Tababi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <!-- Three.js for 3D rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -63,6 +65,26 @@
       </div>
     </div>
   </section>
+
+<!-- EVOLUTION ANIMATION -->
+<section id="journey">
+  <div class="journey-header">
+    <p class="section-label" style="text-align:center;">Mon parcours</p>
+    <h2 class="section-title" style="text-align:center;">L'évolution du dev</h2>
+  </div>
+  <div class="evolution-scene">
+    <canvas id="evoCanvas"></canvas>
+    <div class="evo-info-box">
+      <div class="evo-info-period">Primaire</div>
+      <div class="evo-info-langs">
+        <span class="evo-lang scratch">🟠 Scratch</span>
+      </div>
+      <div class="evo-info-quote">"Déplacer un sprite, c'est déjà coder."</div>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- ABOUT -->
   <section id="about">
@@ -295,6 +317,6 @@
   <footer>
     <p>Fait par <span>Noham Tababi</span> · 2026</p>
   </footer>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

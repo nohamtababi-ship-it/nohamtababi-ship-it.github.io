@@ -344,3 +344,92 @@ footer span { color: var(--accent2); }
   .hero-stats { gap: 1.5rem; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── EVOLUTION ── */
+#journey {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0 0;
+  overflow: hidden;
+}
+.journey-header { padding: 0 2rem 2rem; }
+
+.evolution-scene {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#evoCanvas {
+  display: block;
+  width: 100%;
+  height: 420px;
+  background: transparent;
+}
+
+.evo-info-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 1.2rem 2rem 2.5rem;
+  flex-wrap: wrap;
+  min-height: 80px;
+  transition: opacity 0.3s;
+}
+
+.evo-info-period {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.evo-info-langs {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.evo-lang {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .2rem .65rem;
+  border-radius: 20px;
+  border: 1px solid;
+}
+.evo-lang.scratch { background: rgba(255,140,0,.1); color: #ffa040; border-color: rgba(255,140,0,.3); }
+.evo-lang.python  { background: rgba(55,118,171,.1); color: #4d9de0; border-color: rgba(55,118,171,.3); }
+.evo-lang.cpp     { background: rgba(86,132,163,.12); color: #7eb8d4; border-color: rgba(86,132,163,.5); }
+.evo-lang.java    { background: rgba(234,84,43,.1); color: #f07040; border-color: rgba(234,84,43,.3); }
+
+.evo-info-quote {
+  font-size: .82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+#evo-btn {
+  display: block;
+  margin: 0 auto 2.5rem;
+  padding: .75rem 2rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: .95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .25s;
+  letter-spacing: .04em;
+}
+#evo-btn:hover:not(:disabled) {
+  background: var(--accent2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(86,132,163,.4);
+}
+#evo-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
