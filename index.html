@@ -4,353 +4,335 @@
   <meta charset="UTF-8">
   <title>Portfolio – Noham Tababi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-:root {
-  --bg: #ffffff;             /* fond principal */
-  --card-bg: #f0f4f8;        /* fond des cartes */
-  --card-hover: #e3eaf1;     /* fond au hover des cartes */
-  --stats-bg: #e8eef3;       /* fond section stats */
-  --footer-bg: #f5f8fa;      /* fond footer légèrement différent */
-  --accent: #5684A3;         /* bleu principal pour titres, badges et boutons */
-  --accent-hover: #3d6687;   /* bleu foncé au hover */
-  --text: #111827;           /* texte principal sombre */
-  --text-muted: #4b5563;     /* texte secondaire gris */
-  --border: #d1d5db;         /* bordures légères */
-  --shadow: 0 20px 25px -5px rgba(0,0,0,0.1); /* ombre douce */
-  --tag-bg: rgba(86,132,163,0.15); /* tag bleu léger */
-  --tag-color: #3d6687;           /* texte des tags bleu foncé */
-  --tag-math-bg: rgba(182,194,204,0.25); /* tag maths gris-bleu clair */
-  --tag-math-color: #5684A3;         /* texte tag maths */
-}
-
-/* Corps du site */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* Conteneur général */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Header */
-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 3rem 0;
-  background: rgba(17,24,39,0.05);
-  border-radius: 24px;
-  border: 1px solid var(--border);
-}
-
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-}
-
-.subtitle {
-  font-size: 1.3rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.about {
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: rgba(17,24,39,0.05);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--text-muted);
-}
-.about strong {
-  color: var(--text);
-}
-
-/* Grille projets */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-/* Cartes projets */
-.project-card {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.project-card.featured {
-  grid-column: span 2;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(86,132,163,0.4);
-}
-.project-card:hover {
-  background: var(--card-hover);
-  transform: translateY(-12px);
-  box-shadow: var(--shadow), 0 0 0 1px var(--accent);
-  border-color: var(--accent);
-}
-
-/* Badge */
-.badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--accent);
-  color: white;
-  font-size: 0.75rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-
-/* Titres projet */
-.project-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text);
-}
-
-/* Tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-.tag {
-  background: var(--tag-bg);
-  color: var(--tag-color);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(86,132,163,0.4);
-}
-.tag.math {
-  background: var(--tag-math-bg);
-  color: var(--tag-math-color);
-  border-color: rgba(182,194,204,0.5);
-}
-
-/* Description & challenge */
-.project-desc {
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-.challenge {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 1.4rem;
-  padding-left: 0.75rem;
-  border-left: 3px solid rgba(86,132,163,0.5);
-}
-
-/* Boutons */
-.project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 1.75rem;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 14px 0 rgba(86,132,163,0.4);
-}
-.project-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px 0 rgba(86,132,163,0.5);
-}
-
-/* Stats */
-.stats {
-  background: var(--stats-bg);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  text-align: center;
-  padding: 2rem;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 2rem;
-  padding: 2rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  background: var(--footer-bg);
-  border-radius: 0 0 20px 20px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .project-card.featured { grid-column: span 1; }
-}
-@media (max-width: 768px) {
-  .container { padding: 1rem; }
-  header { padding: 2rem 1rem; margin-bottom: 2rem; }
-  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .project-card { padding: 1.5rem; }
-}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Accueil</a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-content">
+          <div class="hero-tag">Étudiant BUT Informatique · Disponible en alternance</div>
+          <h1 class="hero-name">Noham<br>Tababi</h1>
+          <p class="hero-subtitle">
+            Passionné de C++, d'Intelligence Artificielle et de Game Dev.
+            Je construis des choses from scratch pour comprendre ce qui se passe vraiment.
+          </p>
+          <div class="hero-btns">
+            <a href="https://github.com/nohamtababi-ship-it" target="_blank" rel="noopener" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+            <a href="#projects" class="btn-outline">Voir mes projets ↓</a>
+          </div>
+          <div class="hero-stats">
+            <div><span class="hero-stat-num">C++</span><span class="hero-stat-label">Langage principal</span></div>
+            <div><span class="hero-stat-num">3</span><span class="hero-stat-label">Projets phares</span></div>
+            <div><span class="hero-stat-num">2e</span><span class="hero-stat-label">Code Game Jam</span></div>
+            <div><span class="hero-stat-num">B1</span><span class="hero-stat-label">Anglais</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring"></div>
+            <img src="images/nohamcvphoto.png" class="hero-avatar" alt="Noham Tababi">
+          </div>
+          <div class="hero-float-badges">
+            <div class="float-badge">⚙️ C++ Dev</div>
+            <div class="float-badge">🤖 IA From Scratch</div>
+            <div class="float-badge">🎮 Game Dev</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">À propos</p>
+          <h2 class="section-title">Le code comme terrain d'exploration</h2>
+          <div class="divider"></div>
+          <p>Je développe principalement en <strong>C++</strong>, pas par habitude, mais parce que j'aime comprendre ce qui se passe <strong>sous le capot</strong> : mémoire, performance, structures internes.</p>
+          <p>Mon approche est simple : construire <strong>from scratch</strong> dès que possible. Des moteurs logiques, des IA, des outils CLI, le tout fait à la main pour forcer la compréhension en profondeur.</p>
+          <p>Actuellement en <strong>BUT Informatique à l'IUT d'Orsay</strong>, je recherche une <strong>alternance</strong> pour progresser techniquement et contribuer à des projets concrets.</p>
+        </div>
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-card-icon">🧠</div>
+            <div>
+              <div class="about-card-title">Approche from scratch</div>
+              <div class="about-card-desc">Je construis mes propres outils pour comprendre chaque couche du système.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">⚡</div>
+            <div>
+              <div class="about-card-title">Performance et mémoire</div>
+              <div class="about-card-desc">Obsédé par ce qui se passe au niveau bas : allocation, optimisation, structures.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🎮</div>
+            <div>
+              <div class="about-card-title">Game Development</div>
+              <div class="about-card-desc">Godot et GDScript pour explorer la créativité sous contrainte de temps.</div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🤖</div>
+            <div>
+              <div class="about-card-title">Intelligence Artificielle</div>
+              <div class="about-card-desc">Réseaux de neurones, backpropagation, gradient, sans lib externe.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section id="formation">
+    <div class="container">
+      <p class="section-label">Parcours</p>
+      <h2 class="section-title">Formation</h2>
+      <p class="section-subtitle">Mon parcours académique, étape par étape.</p>
+      <div class="formation-timeline">
+
+        <div class="formation-item">
+          <div class="formation-card">
+            <div class="formation-logo-placeholder">🎓</div>
+            <div>
+              <div class="formation-degree">BUT Informatique</div>
+              <div class="formation-school">IUT Paris-Saclay / Depuis 2025</div>
+              <div class="formation-date">Développement d'applications et technologies numériques</div>
+              <div class="formation-desc">C++, Java, algorithmique, bases de données, développement logiciel.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formation-item">
+          <div class="formation-card">
+            <div class="formation-logo-placeholder">🏫</div>
+            <div>
+              <div class="formation-degree">BAC Technologique STI2D · Mention Bien</div>
+              <div class="formation-school">Lycée Parc de Vilgenis / 2022 à 2025</div>
+              <div class="formation-date">Spécialité SIN (Systèmes d'Information et Numérique)</div>
+              <div class="formation-desc">Bases en électronique, systèmes embarqués et développement numérique.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Compétences</p>
+      <h2 class="section-title">Stack technique</h2>
+      <p class="section-subtitle">Les langages, outils et technologies que j'utilise au quotidien.</p>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <div class="skill-name">C++</div>
+          <div class="skill-level">Programmation</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">☕</div>
+          <div class="skill-name">Java</div>
+          <div class="skill-level">Programmation</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🗃️</div>
+          <div class="skill-name">SQL / MySQL / SQLite</div>
+          <div class="skill-level">Bases de données</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">HTML / CSS</div>
+          <div class="skill-level">Développement web</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:60%"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🎮</div>
+          <div class="skill-name">Godot / GDScript</div>
+          <div class="skill-level">Game Dev</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:62%"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🖥️</div>
+          <div class="skill-name">VS Code / CodeBlocks</div>
+          <div class="skill-level">Outils et environnements</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Projets</p>
+      <h2 class="section-title">Ce que j'ai construit</h2>
+      <p class="section-subtitle">Des projets techniques pensés pour apprendre, pas juste pour livrer.</p>
+      <div class="projects-grid">
+
+        <!-- Code Game Jam (featured) -->
+        <div class="project-card featured">
+          <div class="project-img-placeholder">
+            <div class="pimg-icon">🏆</div>
+            <div class="pimg-hint">📸 Screenshot du jeu Godot · 1200×520px</div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-icon">🕹️</div>
+              <div class="project-badge">2e place IUT d'Orsay</div>
+            </div>
+            <h2 class="project-title">Code Game Jam Paris-Saclay 2026</h2>
+            <div class="project-tags">
+              <span class="tag">Godot</span>
+              <span class="tag">GDScript</span>
+              <span class="tag">Game Dev</span>
+              <span class="tag">Travail en équipe</span>
+            </div>
+            <p class="project-desc">Développement en équipe d'un jeu 2D en temps limité : conception du gameplay, implémentation des mécaniques et optimisation sous contrainte. Classé 2e sur l'ensemble des équipes participantes.</p>
+            <div class="project-challenge">
+              <strong>🔥 Défi principal</strong>
+              Itérer vite, couper le superflu et livrer un jeu stable dans le temps imparti.
+            </div>
+            <a href="#" class="project-btn ghost">⏳ Build bientôt disponible</a>
+          </div>
+        </div>
+
+        <!-- IA From Scratch -->
+        <div class="project-card">
+          <div class="project-img-placeholder">
+            <div class="pimg-icon">🧠</div>
+            <div class="pimg-hint">📸 Screenshot terminal / schéma réseau · 800×360px</div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-icon">🧠</div>
+            </div>
+            <h2 class="project-title">IA From Scratch</h2>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">Réseau de neurones</span>
+              <span class="tag">Backpropagation</span>
+              <span class="tag">Gradient Descent</span>
+            </div>
+            <p class="project-desc">Implémentation complète d'un réseau de neurones en C++, sans bibliothèque externe. Rétropropagation, calcul des gradients et logique d'optimisation codés à la main.</p>
+            <div class="project-challenge">
+              <strong>🔥 Défi principal</strong>
+              Stabiliser l'apprentissage et déboguer les gradients numériquement, étape par étape.
+            </div>
+            <a href="https://github.com/nohamtababi-ship-it/IA_From_Scratch" class="project-btn" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Voir le code source
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestion de contact -->
+        <div class="project-card">
+          <div class="project-img-placeholder">
+            <div class="pimg-icon">📋</div>
+            <div class="pimg-hint">📸 Screenshot terminal CLI · 800×360px</div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-icon">📋</div>
+            </div>
+            <h2 class="project-title">Gestionnaire de Contacts CLI</h2>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">CRUD</span>
+              <span class="tag">Persistance fichier</span>
+              <span class="tag">CLI</span>
+            </div>
+            <p class="project-desc">Application en ligne de commande avec persistance des données, gestion CRUD et structuration des données. Ajout, recherche, modification et suppression robustes aux cas limites.</p>
+            <div class="project-challenge">
+              <strong>🔥 Défi principal</strong>
+              Structurer les données proprement et rendre les entrées utilisateur totalement robustes.
+            </div>
+            <a href="https://github.com/nohamtababi-ship-it/Gestion-de-contact" class="project-btn" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Voir le code source
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+<!-- CONTACT -->
+<section id="contact">
   <div class="container">
-    <header>
-      <h1>Noham Tababi</h1>
-      <p class="subtitle">
-        Étudiant en BUT Informatique, passionné de C++, game dev et IA
-      </p>
-      <a href="https://github.com/nohamtababi-ship-it" class="project-btn" target="_blank">
-        Explorer mes dépôts →
-      </a>
-    </header>
+    <div class="contact-wrapper">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">On se connecte ?</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Étudiant en BUT Informatique, ouvert aux échanges, collaborations ou retours sur mes projets.</p>
+      <div class="contact-links">
 
-    <section class="about">
-      <p>
-        Je développe principalement en <strong>C++</strong> (mais aussi en Java) parce que j'aime comprendre ce qui se passe
-        sous le capot : mémoire, performance, structures internes. Je construis des projets
-        techniques pour apprendre en profondeur — moteurs logiques, IA, outils CLI —
-        avec une approche <strong>from scratch</strong> dès que possible.
-      </p>
-    </section>
+        <a href="https://github.com/nohamtababi-ship-it" class="contact-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
 
-    <div class="projects-grid">
-      <!-- PROJET IA (FEATURED) -->
-      <div class="project-card featured">
-        <div class="badge">PROJET PRINCIPAL</div>
-        <h2 class="project-title">IA From Scratch</h2>
-        <div class="project-tags">
-          <span class="tag">C++</span>
-          <span class="tag">Intelligence Artificielle</span>
-          <span class="tag math">Maths</span>
-          <span class="tag">Backpropagation</span>
-        </div>
-        <p class="project-desc">
-          Implémentation d'un réseau de neurones en C++ basé uniquement sur les concepts
-          mathématiques. Rétropropagation et gradient descendant sans bibliothèque externe.
-          Objectif : comprendre chaque étape du calcul.
-        </p>
-        <p class="challenge">
-          Plus grosse difficulté : stabiliser l'apprentissage et déboguer les gradients
-          numériquement, étape par étape.
-        </p>
-        <a href="https://github.com/nohamtababi-ship-it/IA_From_Scratch" 
-           class="project-btn" target="_blank" rel="noopener">
-          Lire le code source 
         </a>
-      </div>
-
-      <!-- PROJET JEU -->
-      <div class="project-card">
-        <h2 class="project-title">Jeu Code Game Jam 2026</h2>
-        <div class="project-tags">
-          <span class="tag">Godot</span>
-          <span class="tag">GDScript</span>
-          <span class="tag">Game Dev</span>
-          <span class="tag">Game Jam</span>
-        </div>
-        <p class="project-desc">
-          Prototype de jeu 2D développé sous contrainte de temps pour la Code Game Jam.
-          Gameplay complet, boucle de progression, ennemis et pixel art jouable.
-        </p>
-        <p class="challenge">
-          Le vrai défi a été d'itérer vite, enlever les features inutiles et livrer un jeu stable dans le temps imparti.
-        </p>
-        <a href="#" class="project-btn" target="_blank" rel="noopener">
-          Build bientôt dispo 
+        <a href="https://www.linkedin.com/in/noham-tababi-873a5b387" class="contact-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-      </div>
 
-      <!-- PROJET CONTACT -->
-      <div class="project-card">
-        <h2 class="project-title">Gestion de Contact CLI</h2>
-        <div class="project-tags">
-          <span class="tag">C++</span>
-          <span class="tag">Fichiers</span>
-          <span class="tag">Structures</span>
-          <span class="tag">CLI</span>
-        </div>
-        <p class="project-desc">
-          Application console pour gérer un carnet d'adresses avec persistance fichier.
-          Ajout, recherche, modification et suppression avec structures de données propres.
-        </p>
-        <p class="challenge">
-          Travail sur la structuration des données et la robustesse des entrées utilisateur.
-        </p>
-        <a href="https://github.com/nohamtababi-ship-it/Gestion-de-contact" 
-           class="project-btn" target="_blank" rel="noopener">
-          Lire le code source
+        <a href="mailto:noham.tababi@gmail.com" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          noham.tababi@gmail.com
         </a>
+
+
+
       </div>
     </div>
-
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-number">3</span>
-        <span>Projets phares</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">C++</span>
-        <span>Langage principal</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">Java</span>
-        <span>Langage secondaire</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">Godot</span>
-        <span>Game Development</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">CLI</span>
-        <span>Outils techniques</span>
-      </div>
-    </div>
-
-    <footer class="footer">
-      <p>Portfolio  Noham Tababi  2026</p>
-    </footer>
   </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Fait par <span>Noham Tababi</span> · 2026</p>
+  </footer>
+
 </body>
 </html>
