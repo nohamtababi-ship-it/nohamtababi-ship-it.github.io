@@ -211,6 +211,9 @@ section { padding: 6rem 0; }
   background: var(--tag-bg); border: 1px solid var(--border-bright);
   display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
 }
+.formation-logo-placeholder img {
+  width: 100%; height: 100%; object-fit: contain;
+}
 .formation-degree { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: .2rem; }
 .formation-school { font-size: .9rem; color: var(--accent2); font-weight: 600; margin-bottom: .3rem; }
 .formation-date { font-size: .8rem; color: var(--text-muted); margin-bottom: .5rem; }
@@ -232,8 +235,6 @@ section { padding: 6rem 0; }
 .skill-icon { font-size: 2rem; margin-bottom: .6rem; position: relative; }
 .skill-name { font-weight: 700; font-size: .9rem; color: var(--text); position: relative; }
 .skill-level { font-size: .75rem; color: var(--text-muted); margin-top: .2rem; position: relative; }
-.skill-bar { height: 3px; background: var(--border); border-radius: 99px; margin-top: .6rem; position: relative; overflow: hidden; }
-.skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; }
 
 /* ── PROJECTS ── */
 #projects { background: var(--bg2); border-top: 1px solid var(--border); }
